@@ -6,20 +6,28 @@ I created this app to have a fun, interesting, and convenient way to roll dice. 
 
 [Software Demo Video](http://youtube.link.goes.here)
 
-# Development Environment
+## Development Environment
 
 **Code Editor:** Visual Studio Code & Android Studio
 
 **Language:** Flutter & Dart
 
-# Useful Websites
+## Useful Websites
 
-- [Flutter.dev](https://flutter.dev/)
+- [Flutter.dev](https://docs.flutter.dev/)
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
 - [HeyFlutter YouTube Channel](https://www.youtube.com/@HeyFlutter)
 
-# Future Work
+## Future Work
 
 {Make a list of things that you need to fix, improve, and add in the future.}
+
 - Item 1
+
 - Item 2
+
 - Item 3
