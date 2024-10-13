@@ -43,6 +43,8 @@ class MyAppState extends ChangeNotifier {
   int modifier = 0; // modifiers for skills, injuries, etc.
   String diceBaseImagePath = "assets/images/"; // base path for all images
   int totalSum = 0; // total sum of latest dice rolls
+  List<String> rollHistory = <String>[]; // keeps track of the dice roll history
+  String rollSummary = "";
 
   // This list keeps track of how many dice will be rolled at a time.
   // Default is empty. For testing purposes, I will use 1 of each
@@ -57,36 +59,39 @@ class MyAppState extends ChangeNotifier {
     Dice(12, 12),
     Dice(20, 20),
     Dice(100, 100),
-    // Dice(2, 2),
-    // Dice(3, 3),
-    // Dice(4, 4),
-    // Dice(6, 6),
-    // Dice(8, 8),
-    // Dice(10, 10),
-    // Dice(12, 12),
-    // Dice(20, 20),
-    // Dice(100, 100),
-    // Dice(2, 2),
-    // Dice(3, 3),
-    // Dice(4, 4),
-    // Dice(6, 6),
-    // Dice(8, 8),
-    // Dice(10, 10),
-    // Dice(12, 12),
-    // Dice(20, 20),
-    // Dice(100, 100),
+    Dice(2, 2),
+    Dice(3, 3),
+    Dice(4, 4),
+    Dice(6, 6),
+    Dice(8, 8),
+    Dice(10, 10),
+    Dice(12, 12),
+    Dice(20, 20),
+    Dice(100, 100),
+    Dice(2, 2),
+    Dice(3, 3),
+    Dice(4, 4),
+    Dice(6, 6),
+    Dice(8, 8),
+    Dice(10, 10),
+    Dice(12, 12),
+    Dice(20, 20),
+    Dice(100, 100),
   ];
 
   // Generate a random face number between 1 and the current dice's maxFace,
   //  then add that number to the total.
   void rollDice() {
     totalSum = 0;
+    rollSummary = "";
     if (diceList.isNotEmpty) {
       for (Dice dice in diceList) {
         int random = Random().nextInt(dice.maxFace) + 1;
         dice.currentFace = random + modifier;
         totalSum += dice.currentFace;
+        rollSummary += "\nd${dice.maxFace}: ${dice.currentFace}";
       }
+      rollHistory.add("Rolled $totalSum total. $rollSummary");
     }
     notifyListeners(); // Notify listeners to rebuild the UI
   }
@@ -98,9 +103,6 @@ class MyAppState extends ChangeNotifier {
         (Dice diceA, Dice diceB) => diceA.maxFace.compareTo(diceB.maxFace));
     notifyListeners();
   }
-
-  // This list keeps track of the dice roll history
-  List<String> rollHistory = <String>[];
 }
 // ==================== End of Overall App Class/State ==================== //
 
@@ -326,20 +328,20 @@ class DiceListDisplay extends StatelessWidget {
     }
 
     return Expanded(
-            child: Center(
-              child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  Wrap(
-                    spacing: 20.0, // Horizontal spacing between items
-                    runSpacing: 8.0, // Vertical spacing between rows
-                    alignment: WrapAlignment.center, // Center the items
-                    children: diceItemList,
-                  ),
-                ],
-              ),
+      child: Center(
+        child: ListView(
+          shrinkWrap: true,
+          children: <Widget>[
+            Wrap(
+              spacing: 20.0, // Horizontal spacing between items
+              runSpacing: 8.0, // Vertical spacing between rows
+              alignment: WrapAlignment.center, // Center the items
+              children: diceItemList,
             ),
-          );
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -385,41 +387,46 @@ class RollDiceBtn extends StatelessWidget {
 // ============= Start of Roll History Page ============= //
 class RollHistoryPage extends StatelessWidget {
   const RollHistoryPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     MyAppState appState = context.watch<MyAppState>();
     ThemeData theme = Theme.of(context);
     TextStyle titleStyle = theme.textTheme.displayMedium!;
-    TextStyle wordStyle = theme.textTheme.displaySmall!
-        .copyWith(color: theme.colorScheme.onPrimary);
 
+    if (appState.rollHistory.isEmpty) {
+      return Center(
+        child: Text(
+          "No rolls yet",
+          style: titleStyle,
+        ),
+      );
+    }
     return SafeArea(
       child: ListView(
         padding: const EdgeInsets.all(8),
         children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border(
-                  bottom:
-                      BorderSide(color: theme.colorScheme.primary, width: 5)),
-            ),
-            child: Center(
-                child: Text(
-              "Roll History",
-              style: titleStyle,
-            )),
-          ),
           const SizedBox(
             height: 30,
           ),
-          // ClearFavsBtn(appState: appState),
-          // SizedBox(height: 30,),
+          for (String roll in appState.rollHistory) ...[
+            Card(
+              color: theme.colorScheme.primary,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Center(
+                    child: Text(
+                  roll,
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
+                )),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
         ],
       ),
     );
   }
 }
-// ============= Start of Roll History Page ============= //
+// ============= End of Roll History Page ============= //
 
 // ==================== End of App Pages ==================== //
