@@ -24,8 +24,10 @@ I created this app to have a fun, interesting, and convenient way to roll dice. 
 
 ## Future Work
 
-- I still need to work on the other pages: Add Dice and Add Modifiers
+- I need to work on the other pages: Add Dice and Add Modifiers
 
 - Along with the other pages, I need to build their backend code that actually updates the dice list & modifiers variable.
 
 - I need to add a feature where the user can save "profiles" of commonly rolled dice (2d20 for advantage/disadvantage, 4d6 for weapon damage, etc.)
+
+- Currently, the user's rolls do not persist between sessions, so I need to fix that.
