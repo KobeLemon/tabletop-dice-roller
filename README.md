@@ -4,11 +4,13 @@ This is Tabletop Dice Roller! This is a mobile app that can be used to roll dice
 
 I created this app to have a fun, interesting, and convenient way to roll dice. It's especially made for when you do not have dice with you, for players new to tabletop / board games, and everyone else who wants a fun new way to roll dice!
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video]([http://youtube.link.goes.here](https://www.youtube.com/watch?v=xs5vAZwehr0))
 
 ## Development Environment
 
 **Code Editor:** Visual Studio Code & Android Studio
+
+**Emulator:** flutter_emulator, Pixel 8 Pro, Pixel 9 Pro XL, & Pixel 2
 
 **Language:** Flutter & Dart
 
@@ -24,10 +26,8 @@ I created this app to have a fun, interesting, and convenient way to roll dice. 
 
 ## Future Work
 
-- I need to work on the other pages: Add Dice and Add Modifiers
+- More pages: Add Dice and Add Modifiers
 
-- Along with the other pages, I need to build their backend code that actually updates the dice list & modifiers variable.
+- Dice Profiles: the user can save "profiles" of their commonly rolled dice so they can easily reroll them later. (2d20 for advantage/disadvantage, 4d6 + 5 for weapon damage, etc.)
 
-- I need to add a feature where the user can save "profiles" of commonly rolled dice (2d20 for advantage/disadvantage, 4d6 for weapon damage, etc.)
-
-- Currently, the user's rolls do not persist between sessions, so I need to fix that.
+- Memory: The user's roll history is cleared when the app closes, so I need to make that data persist across sessions. I also need to make the dice profiles persist.
