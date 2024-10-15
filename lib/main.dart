@@ -1,15 +1,21 @@
 import 'dart:math';
 
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "package:provider/provider.dart";
 
 void main() {
+  // These two force the app to stay in portrait mode, regardless how the user moves the phone
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // This function runs the app itself.
   runApp(const MyApp());
 }
 
 // ==================== Start of Overall App Class/State ==================== //
+// This class creates the overall app itself.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -29,6 +35,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// This class creates a Dice object with its properties
 class Dice {
   int maxFace;
   int currentFace;
@@ -39,6 +46,7 @@ class Dice {
   );
 }
 
+// This class creates the app's overall state, inheriting from ChangeNotifier
 class MyAppState extends ChangeNotifier {
   int modifier = 0; // modifiers for skills, injuries, etc.
   String diceBaseImagePath = "assets/images/"; // base path for all images
@@ -79,8 +87,7 @@ class MyAppState extends ChangeNotifier {
     Dice(100, 100),
   ];
 
-  // Generate a random face number between 1 and the current dice's maxFace,
-  //  then add that number to the total.
+  // Generate a random face number between 1 and the current dice's maxFace, then add that number to the total.
   void rollDice() {
     totalSum = 0;
     rollSummary = "";
@@ -107,6 +114,7 @@ class MyAppState extends ChangeNotifier {
 // ==================== End of Overall App Class/State ==================== //
 
 // ==================== Start of Home Page Class/State ==================== //
+// This class creates the Home Page with its state
 class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -119,6 +127,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Widget page;
+    // This switch statement sets the page navigation logic.
+    // Eventually there will be four pages, but the two unused pages just route to the home page for now.
     switch (selectedIndex) {
       case 0:
         page = const RollDicePage();
@@ -144,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
 // ==================== End of Home Page Class/State ==================== //
 
 // ==================== Start of Main Layout Builder ==================== //
+  // This method builds the main layout of the app.
   LayoutBuilder mainLayoutBuilder(Widget page) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
@@ -200,6 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
 // ==================== Start of App Pages ==================== //
 
 // ============= Start of Home Roll Dice Page ============= //
+// This class creates the main roll dice page with its state
 class RollDicePage extends StatefulWidget {
   const RollDicePage({super.key});
 
@@ -258,6 +270,7 @@ class _RollDicePageState extends State<RollDicePage> {
   }
 }
 
+// This class creates a DiceItem which is the visual representation of a dice
 class DiceItem extends StatelessWidget {
   const DiceItem({
     super.key,
@@ -274,6 +287,7 @@ class DiceItem extends StatelessWidget {
         height: 100,
         width: 100,
         child: Stack(alignment: Alignment.center, children: <Widget>[
+          // The dice's base image. The images are blank silhouettes of real dice shapes.
           Image.asset(
             //Example:d20_blank.png
             "${appState.diceBaseImagePath}d${dice.maxFace}_blank.png",
@@ -281,10 +295,12 @@ class DiceItem extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // The dice's max face that can be rolled
               Text(
                 "${dice.currentFace}",
                 style: const TextStyle(color: Colors.white, fontSize: 40),
               ),
+              // the type of dice it is (d2, d4, etc.)
               Container(
                   width: 40,
                   decoration: const BoxDecoration(
@@ -306,6 +322,7 @@ class DiceItem extends StatelessWidget {
   }
 }
 
+// This class displays all selected dice
 class DiceListDisplay extends StatelessWidget {
   const DiceListDisplay({
     super.key,
@@ -345,6 +362,7 @@ class DiceListDisplay extends StatelessWidget {
   }
 }
 
+// This class creates the roll dice button which triggers the roll dice functionality
 class RollDiceBtn extends StatelessWidget {
   const RollDiceBtn({
     super.key,
@@ -385,6 +403,8 @@ class RollDiceBtn extends StatelessWidget {
 // ============= End of Home Roll Dice Page ============= //
 
 // ============= Start of Roll History Page ============= //
+// This class creates the Roll History Page which is a history of all rolls,
+//   including the faces of all dice.
 class RollHistoryPage extends StatelessWidget {
   const RollHistoryPage({super.key});
   @override
