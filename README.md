@@ -4,7 +4,13 @@ This is Tabletop Dice Roller! This is a mobile app that can be used to roll dice
 
 I created this app to have a fun, interesting, and convenient way to roll dice. It's especially made for when you do not have dice with you, for players new to tabletop / board games, and everyone else who wants a fun new way to roll dice!
 
+## Demo
+
 [Software Demo Video](https://www.youtube.com/watch?v=xs5vAZwehr0)
+
+![Rolling Dice Image One](/wireframes/main_app_demo-1.png)
+![Rolling Dice Image Two](/wireframes/main_app_demo-2.png)
+![Dice Roll History](/wireframes/main_app_demo-3.png)
 
 ## Development Environment
 
