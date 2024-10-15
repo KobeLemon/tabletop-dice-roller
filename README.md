@@ -4,7 +4,7 @@ This is Tabletop Dice Roller! This is a mobile app that can be used to roll dice
 
 I created this app to have a fun, interesting, and convenient way to roll dice. It's especially made for when you do not have dice with you, for players new to tabletop / board games, and everyone else who wants a fun new way to roll dice!
 
-[Software Demo Video]([http://youtube.link.goes.here](https://www.youtube.com/watch?v=xs5vAZwehr0))
+[Software Demo Video](https://www.youtube.com/watch?v=xs5vAZwehr0)
 
 ## Development Environment
 
@@ -28,6 +28,6 @@ I created this app to have a fun, interesting, and convenient way to roll dice. 
 
 - More pages: Add Dice and Add Modifiers
 
-- Dice Profiles: the user can save "profiles" of their commonly rolled dice so they can easily reroll them later. (2d20 for advantage/disadvantage, 4d6 + 5 for weapon damage, etc.)
+- Dice Profiles: the user can save "profiles" of their commonly rolled dice & modifiers so they can easily reroll them later. (2d20 for advantage/disadvantage, 4d6 + 5 for weapon damage, etc.)
 
 - Memory: The user's roll history is cleared when the app closes, so I need to make that data persist across sessions. I also need to make the dice profiles persist.
