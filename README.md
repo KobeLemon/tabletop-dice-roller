@@ -1,6 +1,6 @@
 # Tabletop Dice Roller
 
-This is Tabletop Dice Roller! This is a mobile app that can be used to roll dice of all different types, amounts, and combinations! From a d2 coin, all the way up to a d100 percentage dice, and everything in between. This app shuffles several times through all numbers available for your chosen dice to simulate a real dice roll to make it as fair and accurate as possible. If you find yourself rolling the same combo of dice often, you can even save dice profiles for easy later use. Just select your dice, then hit **_Roll!_** to let the dice decide your fate!
+This is Tabletop Dice Roller, a Flutter/Dart mobile app that rolls dice for board games, tabletop roleplaying games, and more! From a d2 coin, all the way up to a d100 percentage dice, and everything in between. The numbers are randomized many times, simulate a real and accurate dice roll. If you roll the same combo of dice often (4d6, 2d4, etc.), you can save dice profiles for easy later use. Just select your dice, then hit **_Roll!_** to let the dice decide your fate!
 
 I created this app to have a fun, interesting, and convenient way to roll dice. It's especially made for when you do not have dice with you, for players new to tabletop / board games, and everyone else who wants a fun new way to roll dice!
 
